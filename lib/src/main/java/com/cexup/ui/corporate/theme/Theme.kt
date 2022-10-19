@@ -31,7 +31,7 @@ private val LightColorCorporate = lightColors(
 )
 
 @Composable
-fun CexupTheme(
+fun CorporateTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable() () -> Unit
 ) {
