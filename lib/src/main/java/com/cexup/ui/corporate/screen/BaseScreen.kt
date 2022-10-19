@@ -11,6 +11,8 @@ import com.cexup.ui.corporate.component.AppBar
 import com.cexup.ui.corporate.component.SideBarCorporate
 import com.cexup.ui.corporate.component.SidebarMenuModel
 
+=
+=======
 data class SearchPatientUIState(
     val loading: Boolean = true,
     val error: Boolean = false,
