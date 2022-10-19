@@ -1,4 +1,4 @@
-
+import android.annotation.SuppressLint
 
 plugins {
     id("com.android.library")
@@ -11,6 +11,7 @@ android{
     compileSdk = 32
     defaultConfig {
         minSdk = 23
+        @SuppressLint("ExpiringTargetSdkVersion")
         targetSdk = 30
     }
     buildFeatures {
@@ -63,6 +64,7 @@ dependencies {
     implementation(Libs.Br.Com.Devsrsouza.Compose.Icons.Android.octicons)
     implementation(Libs.AndroidX.Appcompat.appcompat)
     implementation(Libs.Io.CoilKt.coilCompose)
+    implementation(Libs.Com.Github.Skydoves.landscapist)
 
 
 
@@ -71,6 +73,6 @@ dependencies {
     testImplementation(Libs.AndroidX.Compose.Ui.uiTestJunit4)
     testImplementation(Libs.Org.Robolectric.robolectric)
     debugImplementation(Libs.AndroidX.Compose.Ui.uiTestManifest)
-    debugImplementation("androidx.customview:customview-poolingcontainer:1.0.0-rc01")
+    debugImplementation("androidx.customview:customview-poolingcontainer:1.0.0")
 
 }
