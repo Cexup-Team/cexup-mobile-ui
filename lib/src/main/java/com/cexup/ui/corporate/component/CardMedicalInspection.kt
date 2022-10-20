@@ -3,8 +3,8 @@ package com.cexup.ui.corporate.component
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -33,16 +33,19 @@ import com.skydoves.landscapist.coil.CoilImage
 fun CardMedicalInspection(
     modifier: Modifier = Modifier,
     name:String,
-    id:String,
+    userCode:String,
     thumb:String,
     selectedState : Boolean = false,
-    onClick : () -> Unit
+    onClick : (String) -> Unit
 ){
     Card(
         shape = RoundedCornerShape(10.dp),
-        modifier = modifier.clickable {
-            onClick()
-        }
+        modifier = modifier.selectable(
+            selected = selectedState,
+            onClick = {
+                onClick(userCode)
+            }
+        )
     ) {
         Row(
             modifier = modifier
@@ -88,7 +91,7 @@ fun CardMedicalInspection(
                         color = if (selectedState) Color.White else Heading
                     )
                     Text(
-                        text = "ID $id",
+                        text = "ID $userCode",
                         fontSize = 12.sp,
                         style = MaterialTheme.typography.body1.copy(
                             fontWeight = FontWeight(300),
@@ -102,7 +105,7 @@ fun CardMedicalInspection(
                 modifier = modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.End
             ) {
-                IconButton(onClick = { onClick() }) {
+                IconButton(onClick = { onClick(userCode) }) {
                     Image(
                         painter = if(selectedState) painterResource(
                             id = R.drawable.ic_right_arrow_selected
