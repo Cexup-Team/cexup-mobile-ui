@@ -102,4 +102,9 @@
     <string name="corporate_menu_account">Account</string>
     <string name="corporate_menu_logout">Logout</string>
 
+    <string name="corporate_checkup_empty">Please Select the patient you wish to examine. Hopefully the patient is always healthy.</string>
+    <string name="corporate_waiting_checkup">"Waiting Check Up</string>
+    <string name="corporate_physical_exam">"Physical Examination</string>
+    <string name="corporate_sync_cloud">"Sync to cloud</string>
+
 </resources>
