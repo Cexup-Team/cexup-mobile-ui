@@ -107,4 +107,9 @@
     <string name="corporate_physical_exam">"Physical Examination</string>
     <string name="corporate_sync_cloud">"Sync to cloud</string>
 
+    <string name="corporate_back">Back</string>
+    <string name="corporate_input_manual">Input Manual</string>
+    <string name="corporate_measurement_temperature">Temperature</string>
+    
+
 </resources>
