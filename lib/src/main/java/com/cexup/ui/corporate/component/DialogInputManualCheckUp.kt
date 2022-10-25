@@ -10,6 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -17,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.cexup.ui.corporate.theme.*
+import com.cexup.ui.R
 
 @Composable
 fun DialogInputManualTemperature(
@@ -41,7 +43,7 @@ fun DialogInputManualTemperature(
                         .padding(horizontal = 31.dp, vertical = 23.dp),
                 ) {
                     Text(
-                        text = "Temperature",
+                        text = stringResource(id = R.string.corporate_measurement_temperature),
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -105,7 +107,7 @@ fun DialogInputManualTemperature(
                             )
                         ) {
                             Text(
-                                text = "Cancel",
+                                text = stringResource(id = R.string.cancel),
                                 style = MaterialTheme.typography.body1,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(600)
@@ -130,7 +132,7 @@ fun DialogInputManualTemperature(
                             )
                         ) {
                             Text(
-                                text = "Save",
+                                text = stringResource(id = R.string.save),
                                 style = MaterialTheme.typography.body1,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(600)
@@ -170,7 +172,7 @@ fun DialogInputManualBMI(
                     verticalArrangement = Arrangement.spacedBy(3.dp)
                 ) {
                     Text(
-                        text = "Height",
+                        text = stringResource(id = R.string.corporate_measurement_height),
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -202,7 +204,7 @@ fun DialogInputManualBMI(
                         }
                     )
                     Text(
-                        text = "Weight",
+                        text = stringResource(id = R.string.corporate_measurement_weight),
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -256,7 +258,7 @@ fun DialogInputManualBMI(
                             )
                         ) {
                             Text(
-                                text = "Cancel",
+                                text = stringResource(id = R.string.cancel),
                                 style = MaterialTheme.typography.body1,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(600)
@@ -280,7 +282,7 @@ fun DialogInputManualBMI(
                             )
                         ) {
                             Text(
-                                text = "Save",
+                                text = stringResource(id = R.string.save),
                                 style = MaterialTheme.typography.body1,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(600)
@@ -318,7 +320,7 @@ fun DialogInputManualBloodOxygen(
                         .padding(horizontal = 31.dp, vertical = 23.dp),
                 ) {
                     Text(
-                        text = "Bloody Oxygen",
+                        text = stringResource(id = R.string.corporate_measurement_blood_oxygen),
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -350,7 +352,7 @@ fun DialogInputManualBloodOxygen(
                         }
                     )
                     Text(
-                        text = "Heart Rate",
+                        text = stringResource(id = R.string.corporate_measurement_heart_rate),
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -404,7 +406,7 @@ fun DialogInputManualBloodOxygen(
                             )
                         ) {
                             Text(
-                                text = "Cancel",
+                                text = stringResource(id = R.string.cancel),
                                 style = MaterialTheme.typography.body1,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(600)
@@ -431,7 +433,7 @@ fun DialogInputManualBloodOxygen(
                             )
                         ) {
                             Text(
-                                text = "Save",
+                                text = stringResource(id = R.string.save),
                                 style = MaterialTheme.typography.body1,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(600)
@@ -471,7 +473,7 @@ fun DialogInputManualBloodPressure(
                         .padding(horizontal = 31.dp, vertical = 23.dp),
                 ) {
                     Text(
-                        text = "Systole",
+                        text = stringResource(id = R.string.corporate_measurement_systole),
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -503,7 +505,7 @@ fun DialogInputManualBloodPressure(
                         }
                     )
                     Text(
-                        text = "Diastole",
+                        text = stringResource(id = R.string.corporate_measurement_diastole),
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -535,7 +537,7 @@ fun DialogInputManualBloodPressure(
                         }
                     )
                     Text(
-                        text = "Pulse Rate",
+                        text = stringResource(id = R.string.corporate_measurement_pulse_rate),
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -589,7 +591,7 @@ fun DialogInputManualBloodPressure(
                             )
                         ) {
                             Text(
-                                text = "Cancel",
+                                text = stringResource(id = R.string.cancel),
                                 style = MaterialTheme.typography.body1,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(600)
@@ -617,7 +619,7 @@ fun DialogInputManualBloodPressure(
                             )
                         ) {
                             Text(
-                                text = "Save",
+                                text = stringResource(id = R.string.save),
                                 style = MaterialTheme.typography.body1,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(600)
@@ -710,7 +712,7 @@ fun DialogInputManualWaist(
                             )
                         ) {
                             Text(
-                                text = "Cancel",
+                                text = stringResource(id = R.string.cancel),
                                 style = MaterialTheme.typography.body1,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(600)
@@ -734,7 +736,7 @@ fun DialogInputManualWaist(
                             )
                         ) {
                             Text(
-                                text = "Save",
+                                text = stringResource(id = R.string.save),
                                 style = MaterialTheme.typography.body1,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(600)
@@ -779,7 +781,8 @@ fun DialogInputManualMultiparameter(
                         .padding(horizontal = 31.dp, vertical = 23.dp),
                 ) {
                     Text(
-                        text = "Heart Rate/Pulse Rate",
+                        text = stringResource(id = R.string.corporate_measurement_heart_rate) +
+                            "/${stringResource(id = R.string.corporate_measurement_pulse_rate)}",
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -811,7 +814,7 @@ fun DialogInputManualMultiparameter(
                         },
                     )
                     Text(
-                        text = "Systole",
+                        text = stringResource(id = R.string.corporate_measurement_systole),
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -843,7 +846,7 @@ fun DialogInputManualMultiparameter(
                         }
                     )
                     Text(
-                        text = "Diastole",
+                        text = stringResource(id = R.string.corporate_measurement_diastole),
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -875,7 +878,7 @@ fun DialogInputManualMultiparameter(
                         }
                     )
                     Text(
-                        text = "SPO2",
+                        text = stringResource(id = R.string.spo2),
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -906,40 +909,8 @@ fun DialogInputManualMultiparameter(
                             }
                         }
                     )
-//                    Text(
-//                        text = "Pulse Rate",
-//                        style = MaterialTheme.typography.body1,
-//                        fontWeight = FontWeight(400),
-//                        fontSize = 22.sp,
-//                        modifier = modifier
-//                            .fillMaxWidth(),
-//                        textAlign = TextAlign.Left,
-//                        color = GreyBlackStetoscope
-//                    )
-//                    OutlinedTextField(
-//                        modifier = Modifier.fillMaxWidth(),
-//                        value = textPulseRate,
-//                        onValueChange = {textPulseRate = it},
-//                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-//                        trailingIcon = {
-//                            Row {
-//                                Text(
-//                                    text = "Bp",
-//                                    style = MaterialTheme.typography.body1.copy(
-//                                        fontWeight = FontWeight(700),
-//                                        fontSize = 28.sp,
-//                                        letterSpacing = 1.sp,
-//                                        color = GreyBorder,
-//                                    ),
-//                                    modifier = modifier
-//                                        .align(Alignment.CenterVertically)
-//                                        .padding(top = 5.dp),
-//                                )
-//                            }
-//                        }
-//                    )
                     Text(
-                        text = "Temperature",
+                        text = stringResource(id = R.string.corporate_measurement_temperature),
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -981,7 +952,7 @@ fun DialogInputManualMultiparameter(
                         }
                     )
                     Text(
-                        text = "Respiration",
+                        text = stringResource(id = R.string.corporate_measurement_respiration),
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight(400),
                         fontSize = 22.sp,
@@ -1035,7 +1006,7 @@ fun DialogInputManualMultiparameter(
                             )
                         ) {
                             Text(
-                                text = "Cancel",
+                                text = stringResource(id = R.string.cancel),
                                 style = MaterialTheme.typography.body1,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(600)
@@ -1067,7 +1038,7 @@ fun DialogInputManualMultiparameter(
                             )
                         ) {
                             Text(
-                                text = "Save",
+                                text = stringResource(id = R.string.save),
                                 style = MaterialTheme.typography.body1,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(600)
