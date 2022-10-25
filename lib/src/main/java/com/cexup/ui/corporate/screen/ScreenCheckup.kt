@@ -14,10 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cexup.ui.R
-import com.cexup.ui.corporate.component.CardEmptySpace
-import com.cexup.ui.corporate.component.CardMedicalInspection
-import com.cexup.ui.corporate.component.CardPhysicalExamination
-import com.cexup.ui.corporate.component.TypePhysicalExamination
+import com.cexup.ui.corporate.component.*
 import com.cexup.ui.corporate.theme.Heading
 import com.cexup.ui.utils.gridItems
 import compose.icons.Octicons
@@ -158,8 +155,15 @@ fun ScreenCheckup(
                     }
                 } else {
                     item {
-                        Spacer(modifier = Modifier.height(70.dp))
-                        CardEmptySpace()
+                        Spacer(modifier = Modifier.height(50.dp))
+                        CardEmptyState(
+                            drawable = R.drawable.ic_empty_state,
+                            header = stringResource(
+                                id = R.string.greet_nurse,
+                                formatArgs = arrayOf("Sus")
+                            ),
+                            body = stringResource(id = R.string.corporate_checkup_empty)
+                        )
                     }
                 }
             }
