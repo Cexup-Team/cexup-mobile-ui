@@ -4,12 +4,19 @@ import android.view.ContextThemeWrapper
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.LineChart
@@ -20,6 +27,9 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.cexup.ui.R
 import com.cexup.ui.component.chart.XAxisTimeFormatter
+import com.cexup.ui.corporate.theme.AlternativeHeading
+import com.cexup.ui.corporate.theme.Heading
+import com.cexup.ui.corporate.theme.SecondaryCorporate
 import com.cexup.ui.utils.CustomChartMarker
 
 data class LabelAndColorChart(
@@ -27,6 +37,108 @@ data class LabelAndColorChart(
     val colorLine : Int,
     val coloGradient : Int
 )
+
+@Composable
+fun CardPatientHistory(
+    modifier: Modifier = Modifier,
+    name:String,
+    xValueFormatter: List<String> = listOf(),
+    data:List<Entry>,
+    data2:List<Entry>,
+    maxAxis:Float,
+    minAxis:Float,
+    label1 : LabelAndColorChart,
+    label2 : LabelAndColorChart,
+    heightChart : Dp = 267.74.dp
+){
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(Color.Transparent)
+            .height(heightChart)
+    ) {
+        Column(modifier = modifier
+            .background(Color.Transparent)
+            .fillMaxWidth()
+        ) {
+            Text(
+                text = name,
+                style = MaterialTheme.typography.body1.copy(
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight(700),
+                    color = Heading
+                ),
+                modifier = modifier.padding(top = 6.dp,bottom = 6.dp)
+            )
+            Row(
+                modifier = modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        modifier = modifier
+                            .background(
+                                color = AlternativeHeading,
+                                shape = RoundedCornerShape(10.dp)
+                            )
+                            .width(9.77.dp)
+                            .height(6.6.dp)
+
+                    ) {
+
+                    }
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text(
+                        text = "New Patient",
+                        style = MaterialTheme.typography.body1.copy(
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight(400),
+                            color = Color.Black
+                        )
+                    )
+                }
+                Spacer(modifier = Modifier.width(18.32.dp))
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        modifier = modifier
+                            .width(9.77.dp)
+                            .height(6.6.dp)
+                            .background(
+                                color = SecondaryCorporate,
+                                shape = RoundedCornerShape(10.dp)
+                            )
+                    ) {
+
+                    }
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text(
+                        text = "Old patient",
+                        style = MaterialTheme.typography.body1.copy(
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight(400),
+                            color = Color.Black
+                        )
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(20.dp))
+            ChartPatientHistory(
+                data = data,
+                data2 = data2,
+                description = "",
+                minAxis = minAxis,
+                maxAxis = maxAxis,
+                label1 = label1,
+                label2 = label2,
+                xValueFormatter = xValueFormatter
+            )
+        }
+    }
+}
 
 @Composable
 fun ChartPatientHistory(
