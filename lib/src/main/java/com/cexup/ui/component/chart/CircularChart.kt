@@ -15,15 +15,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.cexup.ui.corporate.theme.Heading
 import com.cexup.ui.utils.mediaquery.from
-
-
 
 /**
  * Component Circular Chart
@@ -31,7 +29,6 @@ import com.cexup.ui.utils.mediaquery.from
  * Created by Trian Damai
  * 02/09/2021
  */
-
 
 val normalPrimary = Color(0xFF77DAFA)
 @Composable
@@ -95,7 +92,96 @@ fun CircularChartHealthStatus(
     }
 }
 
+@Composable
+fun CircularBarFeatures(
+    modifier: Modifier = Modifier,
+//    result:String="-",
+    valueOfMeasurement:Float,
+    maxValue:Int,
+    radius : Dp = 50.dp,
+    brush: Brush = Brush.sweepGradient(
+        colors=listOf(
+            Heading,
+            Heading.copy(0.6f),
+        ),
+    ),
+) {
+    val currentPercentage = remember { Animatable(0.01f) }
+    val value : Float = (valueOfMeasurement*1f/maxValue)
+    LaunchedEffect(value) {
+        currentPercentage.animateTo(
+            value,
+            animationSpec = tween(durationMillis = 1000, delayMillis = 1300)
+        )
+    }
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier.size(radius*2f)
+    ){
+//        val primaryBlue = MaterialTheme.colors.primary
+        Canvas(modifier = modifier.size(radius*2f)){
+            drawArc(
+                color= Color.Gray.copy(alpha = 0.2f),
+                startAngle = -90f,
+                sweepAngle = 360f,
+                useCenter = false,
+                style = Stroke(8.dp.toPx(),
+                    cap = StrokeCap.Round)
+            )
+            drawArc(
+                /**
+                 * there ara 4 common color in health meter
+                 * green
+                 * soft green
+                 * yellow
+                 * orange
+                 * red
+                 * **/
+                /**
+                 * there ara 4 common color in health meter
+                 * green
+                 * soft green
+                 * yellow
+                 * orange
+                 * red
+                 * **/
+                /**
+                 * there ara 4 common color in health meter
+                 * green
+                 * soft green
+                 * yellow
+                 * orange
+                 * red
+                 * **/
+                /**
+                 * there ara 4 common color in health meter
+                 * green
+                 * soft green
+                 * yellow
+                 * orange
+                 * red
+                 * **/
 
+                brush = brush,
+                startAngle = -90f,
+                sweepAngle = 360 * currentPercentage.value,
+                useCenter = false,
+                style = Stroke(8.dp.toPx(),
+                    cap = StrokeCap.Round)
+            )
+
+
+        }
+        Text(
+            text = "${valueOfMeasurement.toInt()}%",
+            //percent.toString() ,//(currentPercentage.value*number).toInt().toString(),
+            color = if(isSystemInDarkTheme()) MaterialTheme.colors.primary else Heading,
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Bold
+        )
+
+    }
+}
 
 @Preview
 @Composable
