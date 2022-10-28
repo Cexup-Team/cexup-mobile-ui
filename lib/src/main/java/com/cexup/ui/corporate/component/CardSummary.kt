@@ -15,19 +15,14 @@ import com.cexup.ui.component.chart.BaseChartView
 import com.cexup.ui.corporate.theme.Heading
 import com.github.mikephil.charting.data.Entry
 
-data class DataChartModel(
-    var label:List<String> = listOf(),
-    var entry:List<Entry> = listOf()
-)
-
 @Composable
 fun CardSummary(
     modifier: Modifier = Modifier,
-    listEntryBmi: DataChartModel? = DataChartModel(),
-    listEntryWaist: DataChartModel? = DataChartModel(),
-    listEntryTemp: DataChartModel? = DataChartModel(),
-    listEntryPulseOximetry: DataChartModel? = DataChartModel(),
-    listEntryHeartRate: DataChartModel? = DataChartModel(),
+    dataBmi: Pair<List<String>, List<Entry>> = Pair(listOf(), listOf()),
+    dataWaist: Pair<List<String>, List<Entry>> = Pair(listOf(), listOf()),
+    dataTemp: Pair<List<String>, List<Entry>> = Pair(listOf(), listOf()),
+    dataPulseOximeter: Pair<List<String>, List<Entry>> = Pair(listOf(), listOf()),
+    dataHeartRate: Pair<List<String>, List<Entry>> = Pair(listOf(), listOf()),
 ) {
     Column {
         Column(
@@ -42,8 +37,8 @@ fun CardSummary(
                 modifier = modifier.padding(bottom = 3.dp)
             )
             BaseChartView(
-                data = listEntryWaist?.entry ?: listOf(),
-                name = listEntryWaist?.label ?: listOf(),
+                data = dataWaist.second,
+                name = dataWaist.first,
                 description = "Waist",
                 maxAxis = 60f,
                 minAxis = 0f,
@@ -61,8 +56,8 @@ fun CardSummary(
                 modifier = modifier.padding(bottom = 3.dp)
             )
             BaseChartView(
-                data = listEntryTemp?.entry ?: listOf(),
-                name = listEntryTemp?.label ?: listOf(),
+                data = dataTemp.second,
+                name = dataTemp.first,
                 description = "Temperature",
                 maxAxis = 150f,
                 minAxis = 50f,
@@ -82,8 +77,8 @@ fun CardSummary(
                 modifier = modifier.padding(bottom = 3.dp)
             )
             BaseChartView(
-                data = listEntryBmi?.entry ?: listOf(),
-                name = listEntryBmi?.label ?: listOf(),
+                data = dataBmi.second,
+                name = dataBmi.first,
                 description = "Body Mass Index",
                 maxAxis = 50f,
                 minAxis = 10f,
@@ -103,8 +98,8 @@ fun CardSummary(
                 modifier = modifier.padding(bottom = 3.dp)
             )
             BaseChartView(
-                data = listEntryPulseOximetry?.entry ?: listOf(),
-                name = listEntryPulseOximetry?.label ?: listOf(),
+                data = dataPulseOximeter.second,
+                name = dataPulseOximeter.first,
                 description = "Pulse Oximetry",
                 maxAxis = 150f,
                 minAxis = 50f,
@@ -124,8 +119,8 @@ fun CardSummary(
                 modifier = modifier.padding(bottom = 3.dp)
             )
             BaseChartView(
-                data = listEntryHeartRate?.entry ?: listOf(),
-                name = listEntryHeartRate?.label ?: listOf(),
+                data = dataHeartRate.second,
+                name = dataHeartRate.first,
                 description = "Heart Rate",
                 maxAxis = 150f,
                 minAxis = 50f,
