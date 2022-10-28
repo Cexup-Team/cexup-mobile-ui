@@ -1,6 +1,8 @@
 package com.cexup.ui.corporate.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.cexup.ui.corporate.theme.BackgroundLight
 import com.cexup.ui.corporate.theme.Heading
 import com.cexup.ui.corporate.theme.SecondaryCorporate
 import com.cexup.ui.corporate.theme.inactive
@@ -24,7 +27,7 @@ import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import kotlinx.coroutines.launch
 
-data class TabContent(
+data class TabContentRow(
     var header: String,
     var content: @Composable () -> Unit,
 )
@@ -32,7 +35,7 @@ data class TabContent(
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun TabView (
-    tabContents: List<TabContent>,
+    tabContents: List<TabContentRow>,
     pagerState: PagerState,
 ) {
     val scope = rememberCoroutineScope()
@@ -80,12 +83,54 @@ fun TabView (
                 )
             }
         }
-        HorizontalPager(
-            state = pagerState,
-            verticalAlignment = Alignment.Top,
-            count = tabContents.size
-        ) { page ->
-            tabContents[page].content.invoke()
+    }
+}
+
+@OptIn(ExperimentalPagerApi::class)
+@Composable
+fun TabContent(
+    tabContents: List<TabContentRow>,
+    pagerState: PagerState,
+) {
+    HorizontalPager(
+        state = pagerState,
+        verticalAlignment = Alignment.Top,
+        count = tabContents.size
+    ) { page ->
+        tabContents[page].content.invoke()
+    }
+}
+
+@Composable
+fun TabFeatures(
+    selectedTabIndex: Int,
+    onSelectedTab : (TabContentRow) -> Unit,
+    tabs: List<TabContentRow>
+){
+    TabRow(
+        selectedTabIndex = selectedTabIndex,
+        modifier = Modifier.clip(RoundedCornerShape(7.dp)).height(29.dp),
+        indicator = {},
+        backgroundColor = BackgroundLight
+    ) {
+        tabs.forEachIndexed { index, tabParameter ->
+            Tab(
+                selected = index == selectedTabIndex,
+                onClick = { onSelectedTab(tabParameter) },
+                text = {
+                    Text(
+                        text = tabParameter.header,
+                        style = MaterialTheme.typography.body1.copy(
+                            fontSize = 12.sp,
+                            color = if(selectedTabIndex == index) BackgroundLight else inactive
+                        ),
+                    )
+                },
+                modifier = Modifier.background(
+                    if(selectedTabIndex == index) Heading else BackgroundLight
+                ),
+            )
         }
     }
 }
+
