@@ -8,20 +8,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cexup.ui.utils.capitalizeWords
 
-data class DetailPatient(
-    var name: String = "",
-    var email: String = "",
-    var date_of_birth: String = "",
-    var gender: String = "",
-    var status: Boolean = true,
-    var address: String = "",
-    var phone_number: String = "",
-)
-
 @Composable
 fun CardPatientProfileInformation(
     modifier: Modifier = Modifier,
-    patientResponse: DetailPatient = DetailPatient(),
+    name: String = "Unknown",
+    email: String = "Unknown",
+    date_of_birth: String = "Unknown",
+    gender: String = "Unknown",
+    status: Boolean = true,
+    address: String = "Unknown",
+    phone_number: String = "Unknown",
 ) {
     val listPatientInformation = listOf(
         "name",
@@ -33,21 +29,21 @@ fun CardPatientProfileInformation(
         "phone number",
     )
 
-    val valuelistPatientInformation = listOf(
-        patientResponse.name,
-        patientResponse.email,
-        patientResponse.date_of_birth,
-        patientResponse.gender,
-        true,
-        patientResponse.address,
-        patientResponse.phone_number,
+    val valueListPatientInformation = listOf(
+        name,
+        email,
+        date_of_birth,
+        gender,
+        status,
+        address,
+        phone_number,
     )
 
     Column(
         modifier = modifier
             .padding(0.dp)
     ) {
-        listPatientInformation.zip(valuelistPatientInformation) { a, b ->
+        listPatientInformation.zip(valueListPatientInformation) { a, b ->
             Row(
                 modifier = modifier
                     .fillMaxWidth()
