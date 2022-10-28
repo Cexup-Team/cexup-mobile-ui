@@ -34,20 +34,15 @@ import com.cexup.ui.corporate.theme.inactive
 import com.cexup.ui.utils.capitalizeWords
 import com.cexup.ui.utils.coloredShadow
 
-data class PatientData(
-    var userCode: String,
-    var name: String,
-    var currentDisease: String,
-)
-
 @Composable
 fun CardPatientList(
     modifier: Modifier = Modifier,
-    listPatient: List<PatientData> = listOf(),
-    onClicked: (user_code: String) -> Unit
+    listUserCode: List<String> = listOf(),
+    listName: List<String> = listOf(),
+    listCurrentDisease: List<String> = listOf(),
+    onClicked: (userCode: String) -> Unit
 ) {
-
-    val columnWeight = .9f
+//    val columnWeight = .9f
     Column(
         verticalArrangement = Arrangement.spacedBy(5.dp),
         modifier = modifier
@@ -88,9 +83,7 @@ fun CardPatientList(
                     color = Heading,
                     fontWeight = FontWeight.Bold,
                 )
-
             }
-
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = modifier.width(121.dp),
@@ -117,34 +110,33 @@ fun CardPatientList(
                     fontWeight = FontWeight(700)
                 )
             }
-
         }
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(7.dp),
             content = {
-                items(listPatient.size) { index ->
+                items(listUserCode.size) { index ->
                     PatientRow(
-                        index = index,
-                        patient = listPatient[index],
+                        userCode = listUserCode[index],
+                        name = listName[index],
+                        currentDisease = listCurrentDisease[index],
                         status = "Old Patient",
                         onClicked = {
-                            onClicked(
-                                listPatient[index].userCode
-                            )
+                            onClicked(listUserCode[index])
                         }
                     )
                 }
-            })
+            }
+        )
     }
 }
-
 
 @Composable
 fun PatientRow(
     modifier: Modifier = Modifier,
-    index: Int,
-    patient: PatientData?,
-    status: String,
+    userCode: String = "",
+    name: String = "",
+    currentDisease: String = "",
+    status: String = "",
     onClicked: () -> Unit = {},
 ) {
     val expanded = remember {
@@ -173,11 +165,14 @@ fun PatientRow(
                 modifier = modifier.width(137.dp)
             ) {
                 Image(
-                    painter = rememberImagePainter(data = "", builder = {
-                        crossfade(true)
-                        placeholder(R.drawable.dummy_profile)
-                        error(R.drawable.dummy_profile)
-                    }),
+                    painter = rememberImagePainter(
+                        data = "",
+                        builder = {
+                            crossfade(true)
+                            placeholder(R.drawable.dummy_profile)
+                            error(R.drawable.dummy_profile)
+                        }
+                    ),
                     contentDescription = "",
                     modifier = modifier
                         .clip(CircleShape)
@@ -188,7 +183,7 @@ fun PatientRow(
                 )
                 Spacer(modifier.width(10.dp))
                 Text(
-                    text = patient?.name?.capitalizeWords() ?: "",
+                    text = name.capitalizeWords(),
                     fontSize = 12.sp,
                     style = MaterialTheme.typography.body1,
                     color = Heading,
@@ -200,7 +195,7 @@ fun PatientRow(
                 modifier = modifier.width(108.dp)
             ) {
                 Text(
-                    text = "ID $index",
+                    text = "ID $userCode",
                     fontSize = 12.sp,
                     style = MaterialTheme.typography.body1,
                     color = Heading,
@@ -214,8 +209,7 @@ fun PatientRow(
 
             ) {
                 Text(
-                    text = (patient?.currentDisease
-                        ?: "Empty disease").ifBlank { "Empty disease" },
+                    text = (currentDisease).ifBlank { "Empty disease" },
                     fontSize = 12.sp,
                     style = MaterialTheme.typography.body1,
                     color = Heading,
