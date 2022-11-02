@@ -43,7 +43,8 @@ android{
     }
 }
 dependencies {
-
+    
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.0")
 
     implementation(Libs.Com.Google.Material.material)
     with(Libs.AndroidX.Compose){
