@@ -4,13 +4,18 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
+    id("maven-publish")
 }
 
 android{
 
     compileSdk = 32
     defaultConfig {
+        aarMetadata {
+            minCompileSdk = 23
+        }
         minSdk = 23
+        @SuppressLint("ExpiredTargetSdkVersion")
         targetSdk = 30
     }
     buildFeatures {
@@ -18,6 +23,12 @@ android{
     }
     composeOptions {
         kotlinCompilerExtensionVersion = Version.compose_compiler_version
+    }
+    
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
     }
 
     compileOptions {
