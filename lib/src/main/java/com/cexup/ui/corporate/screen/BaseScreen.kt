@@ -2,8 +2,6 @@ package com.cexup.ui.corporate.screen
 
 import androidx.compose.runtime.Composable
 
-=
-=======
 data class SearchPatientUIState(
     val loading: Boolean = true,
     val error: Boolean = false,
