@@ -15,8 +15,7 @@ android{
             minCompileSdk = 23
         }
         minSdk = 23
-        @SuppressLint("ExpiredTargetSdkVersion")
-        targetSdk = 30
+        targetSdk = 32
     }
     buildFeatures {
         compose= true
